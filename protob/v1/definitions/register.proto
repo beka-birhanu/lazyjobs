@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "github.com/beka-birhanu/lazyjobs/protob/v1/golang;protob";
+
+
+message RegisterWorkerRequest {
+  string queue_id = 1;
+  string worker_id = 2;
+}
+
+message RegisterWorkerResponse {
+  bool successful = 1;
+  string message = 2;
+}
+
+service Registration {
+  rpc RegisterWorker(RegisterWorkerRequest) returns (RegisterWorkerResponse);
+}

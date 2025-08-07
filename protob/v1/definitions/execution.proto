@@ -1,0 +1,59 @@
+syntax="proto3";
+
+option go_package = "github.com/beka-birhanu/lazyjobs/protob/v1/golang;protob";
+
+
+message StartWorkflowRequest {
+  string queue_name = 1;
+  string workflow_name = 2;
+  repeated bytes parameters = 3;
+  string execution_id = 4;
+}
+
+message StartWorkflowResponse {
+  bool successful = 1;
+  string message = 2;
+}
+
+message PollForWorkflowRequest {
+  string queue_name = 1;
+}
+
+message WorkflowInfo {
+  string workflow_name = 1;
+  repeated bytes parameters = 2;
+  string execution_id = 3;
+  map<string, bytes> past_events = 4;
+}
+
+message PollForWorkflowResponse {
+  bool successful = 1;
+  string message = 2;
+  WorkflowInfo workflow = 3;
+}
+
+message AddWorkflowEventsRequest {
+  string execution_id = 1;
+  map<string, bytes> events = 2;
+}
+
+message AddWorkflowEventsResponse {
+  bool successful = 1;
+  string message = 2; 
+}
+
+message CompleteWorkflowRequest {
+  string execution_id = 1;
+}
+
+message CompleteWorkflowResponse {
+  bool successful = 1;
+  string message = 2; 
+}
+
+service WorkflowService {
+  rpc StartWorkflow(StartWorkflowRequest) returns (StartWorkflowResponse);
+  rpc PollForWorkflow(PollForWorkflowRequest) returns (PollForWorkflowResponse);
+  rpc AddWorkflowEvents(AddWorkflowEventsRequest) returns (AddWorkflowEventsResponse);
+  rpc CompleteWorkflow(CompleteWorkflowRequest) returns (CompleteWorkflowResponse);
+}
