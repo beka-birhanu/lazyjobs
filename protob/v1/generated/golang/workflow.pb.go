@@ -649,7 +649,7 @@ func (x *CompleteWorkflowResponse) GetMessage() string {
 	return ""
 }
 
-type RegisterWorkerRequest struct {
+type RegisterWorkflowRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	QueueName     string                 `protobuf:"bytes,1,opt,name=queue_name,json=queueName,proto3" json:"queue_name,omitempty"`
 	WorkerName    string                 `protobuf:"bytes,2,opt,name=worker_name,json=workerName,proto3" json:"worker_name,omitempty"`
@@ -657,20 +657,20 @@ type RegisterWorkerRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RegisterWorkerRequest) Reset() {
-	*x = RegisterWorkerRequest{}
+func (x *RegisterWorkflowRequest) Reset() {
+	*x = RegisterWorkflowRequest{}
 	mi := &file_workflow_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RegisterWorkerRequest) String() string {
+func (x *RegisterWorkflowRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RegisterWorkerRequest) ProtoMessage() {}
+func (*RegisterWorkflowRequest) ProtoMessage() {}
 
-func (x *RegisterWorkerRequest) ProtoReflect() protoreflect.Message {
+func (x *RegisterWorkflowRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_workflow_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -682,26 +682,26 @@ func (x *RegisterWorkerRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RegisterWorkerRequest.ProtoReflect.Descriptor instead.
-func (*RegisterWorkerRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use RegisterWorkflowRequest.ProtoReflect.Descriptor instead.
+func (*RegisterWorkflowRequest) Descriptor() ([]byte, []int) {
 	return file_workflow_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *RegisterWorkerRequest) GetQueueName() string {
+func (x *RegisterWorkflowRequest) GetQueueName() string {
 	if x != nil {
 		return x.QueueName
 	}
 	return ""
 }
 
-func (x *RegisterWorkerRequest) GetWorkerName() string {
+func (x *RegisterWorkflowRequest) GetWorkerName() string {
 	if x != nil {
 		return x.WorkerName
 	}
 	return ""
 }
 
-type RegisterWorkerResponse struct {
+type RegisterWorkflowResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Successful    bool                   `protobuf:"varint,1,opt,name=successful,proto3" json:"successful,omitempty"`
 	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
@@ -709,20 +709,20 @@ type RegisterWorkerResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RegisterWorkerResponse) Reset() {
-	*x = RegisterWorkerResponse{}
+func (x *RegisterWorkflowResponse) Reset() {
+	*x = RegisterWorkflowResponse{}
 	mi := &file_workflow_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RegisterWorkerResponse) String() string {
+func (x *RegisterWorkflowResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RegisterWorkerResponse) ProtoMessage() {}
+func (*RegisterWorkflowResponse) ProtoMessage() {}
 
-func (x *RegisterWorkerResponse) ProtoReflect() protoreflect.Message {
+func (x *RegisterWorkflowResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_workflow_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -734,19 +734,19 @@ func (x *RegisterWorkerResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RegisterWorkerResponse.ProtoReflect.Descriptor instead.
-func (*RegisterWorkerResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use RegisterWorkflowResponse.ProtoReflect.Descriptor instead.
+func (*RegisterWorkflowResponse) Descriptor() ([]byte, []int) {
 	return file_workflow_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *RegisterWorkerResponse) GetSuccessful() bool {
+func (x *RegisterWorkflowResponse) GetSuccessful() bool {
 	if x != nil {
 		return x.Successful
 	}
 	return false
 }
 
-func (x *RegisterWorkerResponse) GetMessage() string {
+func (x *RegisterWorkflowResponse) GetMessage() string {
 	if x != nil {
 		return x.Message
 	}
@@ -811,13 +811,13 @@ const file_workflow_proto_rawDesc = "" +
 	"\n" +
 	"successful\x18\x01 \x01(\bR\n" +
 	"successful\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\"W\n" +
-	"\x15RegisterWorkerRequest\x12\x1d\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage\"Y\n" +
+	"\x17RegisterWorkflowRequest\x12\x1d\n" +
 	"\n" +
 	"queue_name\x18\x01 \x01(\tR\tqueueName\x12\x1f\n" +
 	"\vworker_name\x18\x02 \x01(\tR\n" +
-	"workerName\"R\n" +
-	"\x16RegisterWorkerResponse\x12\x1e\n" +
+	"workerName\"T\n" +
+	"\x18RegisterWorkflowResponse\x12\x1e\n" +
 	"\n" +
 	"successful\x18\x01 \x01(\bR\n" +
 	"successful\x12\x18\n" +
@@ -831,9 +831,9 @@ const file_workflow_proto_rawDesc = "" +
 	"\"EVENT_TYPE_ACTIVITY_TASK_COMPLETED\x10\x05\x12\x1c\n" +
 	"\x18EVENT_TYPE_TIMER_STARTED\x10\x06\x12\x1a\n" +
 	"\x16EVENT_TYPE_TIMER_FIRED\x10\a\x12\x1e\n" +
-	"\x1aEVENT_TYPE_SIGNAL_RECEIVED\x10\b2\xf8\x02\n" +
-	"\x0fWorkflowService\x12A\n" +
-	"\x0eRegisterWorker\x12\x16.RegisterWorkerRequest\x1a\x17.RegisterWorkerResponse\x12G\n" +
+	"\x1aEVENT_TYPE_SIGNAL_RECEIVED\x10\b2\xfe\x02\n" +
+	"\x0fWorkflowService\x12G\n" +
+	"\x10RegisterWorkflow\x12\x18.RegisterWorkflowRequest\x1a\x19.RegisterWorkflowResponse\x12G\n" +
 	"\x10ScheduleWorkflow\x12\x18.ScheduleWorkflowRequest\x1a\x19.ScheduleWorkflowResponse\x12D\n" +
 	"\x0fPollForWorkflow\x12\x17.PollForWorkflowRequest\x1a\x18.PollForWorkflowResponse\x12J\n" +
 	"\x11AddWorkflowEvents\x12\x19.AddWorkflowEventsRequest\x1a\x1a.AddWorkflowEventsResponse\x12G\n" +
@@ -865,8 +865,8 @@ var file_workflow_proto_goTypes = []any{
 	(*AddWorkflowEventsResponse)(nil), // 8: AddWorkflowEventsResponse
 	(*CompleteWorkflowRequest)(nil),   // 9: CompleteWorkflowRequest
 	(*CompleteWorkflowResponse)(nil),  // 10: CompleteWorkflowResponse
-	(*RegisterWorkerRequest)(nil),     // 11: RegisterWorkerRequest
-	(*RegisterWorkerResponse)(nil),    // 12: RegisterWorkerResponse
+	(*RegisterWorkflowRequest)(nil),   // 11: RegisterWorkflowRequest
+	(*RegisterWorkflowResponse)(nil),  // 12: RegisterWorkflowResponse
 	nil,                               // 13: AddWorkflowEventsRequest.EventsEntry
 	(*timestamppb.Timestamp)(nil),     // 14: google.protobuf.Timestamp
 }
@@ -876,12 +876,12 @@ var file_workflow_proto_depIdxs = []int32{
 	4,  // 2: Workflow.events:type_name -> HistoryEvent
 	5,  // 3: PollForWorkflowResponse.workflow:type_name -> Workflow
 	13, // 4: AddWorkflowEventsRequest.events:type_name -> AddWorkflowEventsRequest.EventsEntry
-	11, // 5: WorkflowService.RegisterWorker:input_type -> RegisterWorkerRequest
+	11, // 5: WorkflowService.RegisterWorkflow:input_type -> RegisterWorkflowRequest
 	1,  // 6: WorkflowService.ScheduleWorkflow:input_type -> ScheduleWorkflowRequest
 	3,  // 7: WorkflowService.PollForWorkflow:input_type -> PollForWorkflowRequest
 	7,  // 8: WorkflowService.AddWorkflowEvents:input_type -> AddWorkflowEventsRequest
 	9,  // 9: WorkflowService.CompleteWorkflow:input_type -> CompleteWorkflowRequest
-	12, // 10: WorkflowService.RegisterWorker:output_type -> RegisterWorkerResponse
+	12, // 10: WorkflowService.RegisterWorkflow:output_type -> RegisterWorkflowResponse
 	2,  // 11: WorkflowService.ScheduleWorkflow:output_type -> ScheduleWorkflowResponse
 	6,  // 12: WorkflowService.PollForWorkflow:output_type -> PollForWorkflowResponse
 	8,  // 13: WorkflowService.AddWorkflowEvents:output_type -> AddWorkflowEventsResponse
