@@ -652,7 +652,7 @@ func (x *CompleteWorkflowResponse) GetMessage() string {
 type RegisterWorkflowRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	QueueName     string                 `protobuf:"bytes,1,opt,name=queue_name,json=queueName,proto3" json:"queue_name,omitempty"`
-	WorkerName    string                 `protobuf:"bytes,2,opt,name=worker_name,json=workerName,proto3" json:"worker_name,omitempty"`
+	WorkflowName  string                 `protobuf:"bytes,2,opt,name=workflow_name,json=workflowName,proto3" json:"workflow_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -694,9 +694,9 @@ func (x *RegisterWorkflowRequest) GetQueueName() string {
 	return ""
 }
 
-func (x *RegisterWorkflowRequest) GetWorkerName() string {
+func (x *RegisterWorkflowRequest) GetWorkflowName() string {
 	if x != nil {
-		return x.WorkerName
+		return x.WorkflowName
 	}
 	return ""
 }
@@ -811,12 +811,11 @@ const file_workflow_proto_rawDesc = "" +
 	"\n" +
 	"successful\x18\x01 \x01(\bR\n" +
 	"successful\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\"Y\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage\"]\n" +
 	"\x17RegisterWorkflowRequest\x12\x1d\n" +
 	"\n" +
-	"queue_name\x18\x01 \x01(\tR\tqueueName\x12\x1f\n" +
-	"\vworker_name\x18\x02 \x01(\tR\n" +
-	"workerName\"T\n" +
+	"queue_name\x18\x01 \x01(\tR\tqueueName\x12#\n" +
+	"\rworkflow_name\x18\x02 \x01(\tR\fworkflowName\"T\n" +
 	"\x18RegisterWorkflowResponse\x12\x1e\n" +
 	"\n" +
 	"successful\x18\x01 \x01(\bR\n" +
