@@ -89,7 +89,7 @@ func (EventType) EnumDescriptor() ([]byte, []int) {
 	return file_workflow_proto_rawDescGZIP(), []int{0}
 }
 
-type StartWorkflowRequest struct {
+type ScheduleWorkflowRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	QueueName     string                 `protobuf:"bytes,1,opt,name=queue_name,json=queueName,proto3" json:"queue_name,omitempty"`
 	WorkflowName  string                 `protobuf:"bytes,2,opt,name=workflow_name,json=workflowName,proto3" json:"workflow_name,omitempty"`
@@ -99,20 +99,20 @@ type StartWorkflowRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *StartWorkflowRequest) Reset() {
-	*x = StartWorkflowRequest{}
+func (x *ScheduleWorkflowRequest) Reset() {
+	*x = ScheduleWorkflowRequest{}
 	mi := &file_workflow_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *StartWorkflowRequest) String() string {
+func (x *ScheduleWorkflowRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*StartWorkflowRequest) ProtoMessage() {}
+func (*ScheduleWorkflowRequest) ProtoMessage() {}
 
-func (x *StartWorkflowRequest) ProtoReflect() protoreflect.Message {
+func (x *ScheduleWorkflowRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_workflow_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -124,40 +124,40 @@ func (x *StartWorkflowRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use StartWorkflowRequest.ProtoReflect.Descriptor instead.
-func (*StartWorkflowRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ScheduleWorkflowRequest.ProtoReflect.Descriptor instead.
+func (*ScheduleWorkflowRequest) Descriptor() ([]byte, []int) {
 	return file_workflow_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *StartWorkflowRequest) GetQueueName() string {
+func (x *ScheduleWorkflowRequest) GetQueueName() string {
 	if x != nil {
 		return x.QueueName
 	}
 	return ""
 }
 
-func (x *StartWorkflowRequest) GetWorkflowName() string {
+func (x *ScheduleWorkflowRequest) GetWorkflowName() string {
 	if x != nil {
 		return x.WorkflowName
 	}
 	return ""
 }
 
-func (x *StartWorkflowRequest) GetParameters() [][]byte {
+func (x *ScheduleWorkflowRequest) GetParameters() [][]byte {
 	if x != nil {
 		return x.Parameters
 	}
 	return nil
 }
 
-func (x *StartWorkflowRequest) GetExecutionId() string {
+func (x *ScheduleWorkflowRequest) GetExecutionId() string {
 	if x != nil {
 		return x.ExecutionId
 	}
 	return ""
 }
 
-type StartWorkflowResponse struct {
+type ScheduleWorkflowResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Successful    bool                   `protobuf:"varint,1,opt,name=successful,proto3" json:"successful,omitempty"`
 	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
@@ -165,20 +165,20 @@ type StartWorkflowResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *StartWorkflowResponse) Reset() {
-	*x = StartWorkflowResponse{}
+func (x *ScheduleWorkflowResponse) Reset() {
+	*x = ScheduleWorkflowResponse{}
 	mi := &file_workflow_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *StartWorkflowResponse) String() string {
+func (x *ScheduleWorkflowResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*StartWorkflowResponse) ProtoMessage() {}
+func (*ScheduleWorkflowResponse) ProtoMessage() {}
 
-func (x *StartWorkflowResponse) ProtoReflect() protoreflect.Message {
+func (x *ScheduleWorkflowResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_workflow_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -190,19 +190,19 @@ func (x *StartWorkflowResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use StartWorkflowResponse.ProtoReflect.Descriptor instead.
-func (*StartWorkflowResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ScheduleWorkflowResponse.ProtoReflect.Descriptor instead.
+func (*ScheduleWorkflowResponse) Descriptor() ([]byte, []int) {
 	return file_workflow_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *StartWorkflowResponse) GetSuccessful() bool {
+func (x *ScheduleWorkflowResponse) GetSuccessful() bool {
 	if x != nil {
 		return x.Successful
 	}
 	return false
 }
 
-func (x *StartWorkflowResponse) GetMessage() string {
+func (x *ScheduleWorkflowResponse) GetMessage() string {
 	if x != nil {
 		return x.Message
 	}
@@ -757,16 +757,16 @@ var File_workflow_proto protoreflect.FileDescriptor
 
 const file_workflow_proto_rawDesc = "" +
 	"\n" +
-	"\x0eworkflow.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9d\x01\n" +
-	"\x14StartWorkflowRequest\x12\x1d\n" +
+	"\x0eworkflow.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa0\x01\n" +
+	"\x17ScheduleWorkflowRequest\x12\x1d\n" +
 	"\n" +
 	"queue_name\x18\x01 \x01(\tR\tqueueName\x12#\n" +
 	"\rworkflow_name\x18\x02 \x01(\tR\fworkflowName\x12\x1e\n" +
 	"\n" +
 	"parameters\x18\x03 \x03(\fR\n" +
 	"parameters\x12!\n" +
-	"\fexecution_id\x18\x04 \x01(\tR\vexecutionId\"Q\n" +
-	"\x15StartWorkflowResponse\x12\x1e\n" +
+	"\fexecution_id\x18\x04 \x01(\tR\vexecutionId\"T\n" +
+	"\x18ScheduleWorkflowResponse\x12\x1e\n" +
 	"\n" +
 	"successful\x18\x01 \x01(\bR\n" +
 	"successful\x12\x18\n" +
@@ -829,10 +829,10 @@ const file_workflow_proto_rawDesc = "" +
 	"\"EVENT_TYPE_ACTIVITY_TASK_COMPLETED\x10\x05\x12\x1c\n" +
 	"\x18EVENT_TYPE_TIMER_STARTED\x10\x06\x12\x1a\n" +
 	"\x16EVENT_TYPE_TIMER_FIRED\x10\a\x12\x1e\n" +
-	"\x1aEVENT_TYPE_SIGNAL_RECEIVED\x10\b2\xef\x02\n" +
+	"\x1aEVENT_TYPE_SIGNAL_RECEIVED\x10\b2\xf8\x02\n" +
 	"\x0fWorkflowService\x12A\n" +
-	"\x0eRegisterWorker\x12\x16.RegisterWorkerRequest\x1a\x17.RegisterWorkerResponse\x12>\n" +
-	"\rStartWorkflow\x12\x15.StartWorkflowRequest\x1a\x16.StartWorkflowResponse\x12D\n" +
+	"\x0eRegisterWorker\x12\x16.RegisterWorkerRequest\x1a\x17.RegisterWorkerResponse\x12G\n" +
+	"\x10ScheduleWorkflow\x12\x18.ScheduleWorkflowRequest\x1a\x19.ScheduleWorkflowResponse\x12D\n" +
 	"\x0fPollForWorkflow\x12\x17.PollForWorkflowRequest\x1a\x18.PollForWorkflowResponse\x12J\n" +
 	"\x11AddWorkflowEvents\x12\x19.AddWorkflowEventsRequest\x1a\x1a.AddWorkflowEventsResponse\x12G\n" +
 	"\x10CompleteWorkflow\x12\x18.CompleteWorkflowRequest\x1a\x19.CompleteWorkflowResponseB:Z8github.com/beka-birhanu/lazyjobs/protob/v1/golang;protobb\x06proto3"
@@ -853,8 +853,8 @@ var file_workflow_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_workflow_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_workflow_proto_goTypes = []any{
 	(EventType)(0),                    // 0: EventType
-	(*StartWorkflowRequest)(nil),      // 1: StartWorkflowRequest
-	(*StartWorkflowResponse)(nil),     // 2: StartWorkflowResponse
+	(*ScheduleWorkflowRequest)(nil),   // 1: ScheduleWorkflowRequest
+	(*ScheduleWorkflowResponse)(nil),  // 2: ScheduleWorkflowResponse
 	(*PollForWorkflowRequest)(nil),    // 3: PollForWorkflowRequest
 	(*HistoryEvent)(nil),              // 4: HistoryEvent
 	(*Workflow)(nil),                  // 5: Workflow
@@ -875,12 +875,12 @@ var file_workflow_proto_depIdxs = []int32{
 	5,  // 3: PollForWorkflowResponse.workflow:type_name -> Workflow
 	13, // 4: AddWorkflowEventsRequest.events:type_name -> AddWorkflowEventsRequest.EventsEntry
 	11, // 5: WorkflowService.RegisterWorker:input_type -> RegisterWorkerRequest
-	1,  // 6: WorkflowService.StartWorkflow:input_type -> StartWorkflowRequest
+	1,  // 6: WorkflowService.ScheduleWorkflow:input_type -> ScheduleWorkflowRequest
 	3,  // 7: WorkflowService.PollForWorkflow:input_type -> PollForWorkflowRequest
 	7,  // 8: WorkflowService.AddWorkflowEvents:input_type -> AddWorkflowEventsRequest
 	9,  // 9: WorkflowService.CompleteWorkflow:input_type -> CompleteWorkflowRequest
 	12, // 10: WorkflowService.RegisterWorker:output_type -> RegisterWorkerResponse
-	2,  // 11: WorkflowService.StartWorkflow:output_type -> StartWorkflowResponse
+	2,  // 11: WorkflowService.ScheduleWorkflow:output_type -> ScheduleWorkflowResponse
 	6,  // 12: WorkflowService.PollForWorkflow:output_type -> PollForWorkflowResponse
 	8,  // 13: WorkflowService.AddWorkflowEvents:output_type -> AddWorkflowEventsResponse
 	10, // 14: WorkflowService.CompleteWorkflow:output_type -> CompleteWorkflowResponse

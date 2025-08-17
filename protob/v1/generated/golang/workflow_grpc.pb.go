@@ -20,7 +20,7 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	WorkflowService_RegisterWorker_FullMethodName    = "/WorkflowService/RegisterWorker"
-	WorkflowService_StartWorkflow_FullMethodName     = "/WorkflowService/StartWorkflow"
+	WorkflowService_ScheduleWorkflow_FullMethodName  = "/WorkflowService/ScheduleWorkflow"
 	WorkflowService_PollForWorkflow_FullMethodName   = "/WorkflowService/PollForWorkflow"
 	WorkflowService_AddWorkflowEvents_FullMethodName = "/WorkflowService/AddWorkflowEvents"
 	WorkflowService_CompleteWorkflow_FullMethodName  = "/WorkflowService/CompleteWorkflow"
@@ -31,7 +31,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type WorkflowServiceClient interface {
 	RegisterWorker(ctx context.Context, in *RegisterWorkerRequest, opts ...grpc.CallOption) (*RegisterWorkerResponse, error)
-	StartWorkflow(ctx context.Context, in *StartWorkflowRequest, opts ...grpc.CallOption) (*StartWorkflowResponse, error)
+	ScheduleWorkflow(ctx context.Context, in *ScheduleWorkflowRequest, opts ...grpc.CallOption) (*ScheduleWorkflowResponse, error)
 	PollForWorkflow(ctx context.Context, in *PollForWorkflowRequest, opts ...grpc.CallOption) (*PollForWorkflowResponse, error)
 	AddWorkflowEvents(ctx context.Context, in *AddWorkflowEventsRequest, opts ...grpc.CallOption) (*AddWorkflowEventsResponse, error)
 	CompleteWorkflow(ctx context.Context, in *CompleteWorkflowRequest, opts ...grpc.CallOption) (*CompleteWorkflowResponse, error)
@@ -55,10 +55,10 @@ func (c *workflowServiceClient) RegisterWorker(ctx context.Context, in *Register
 	return out, nil
 }
 
-func (c *workflowServiceClient) StartWorkflow(ctx context.Context, in *StartWorkflowRequest, opts ...grpc.CallOption) (*StartWorkflowResponse, error) {
+func (c *workflowServiceClient) ScheduleWorkflow(ctx context.Context, in *ScheduleWorkflowRequest, opts ...grpc.CallOption) (*ScheduleWorkflowResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(StartWorkflowResponse)
-	err := c.cc.Invoke(ctx, WorkflowService_StartWorkflow_FullMethodName, in, out, cOpts...)
+	out := new(ScheduleWorkflowResponse)
+	err := c.cc.Invoke(ctx, WorkflowService_ScheduleWorkflow_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -100,7 +100,7 @@ func (c *workflowServiceClient) CompleteWorkflow(ctx context.Context, in *Comple
 // for forward compatibility.
 type WorkflowServiceServer interface {
 	RegisterWorker(context.Context, *RegisterWorkerRequest) (*RegisterWorkerResponse, error)
-	StartWorkflow(context.Context, *StartWorkflowRequest) (*StartWorkflowResponse, error)
+	ScheduleWorkflow(context.Context, *ScheduleWorkflowRequest) (*ScheduleWorkflowResponse, error)
 	PollForWorkflow(context.Context, *PollForWorkflowRequest) (*PollForWorkflowResponse, error)
 	AddWorkflowEvents(context.Context, *AddWorkflowEventsRequest) (*AddWorkflowEventsResponse, error)
 	CompleteWorkflow(context.Context, *CompleteWorkflowRequest) (*CompleteWorkflowResponse, error)
@@ -117,8 +117,8 @@ type UnimplementedWorkflowServiceServer struct{}
 func (UnimplementedWorkflowServiceServer) RegisterWorker(context.Context, *RegisterWorkerRequest) (*RegisterWorkerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegisterWorker not implemented")
 }
-func (UnimplementedWorkflowServiceServer) StartWorkflow(context.Context, *StartWorkflowRequest) (*StartWorkflowResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StartWorkflow not implemented")
+func (UnimplementedWorkflowServiceServer) ScheduleWorkflow(context.Context, *ScheduleWorkflowRequest) (*ScheduleWorkflowResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ScheduleWorkflow not implemented")
 }
 func (UnimplementedWorkflowServiceServer) PollForWorkflow(context.Context, *PollForWorkflowRequest) (*PollForWorkflowResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PollForWorkflow not implemented")
@@ -168,20 +168,20 @@ func _WorkflowService_RegisterWorker_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WorkflowService_StartWorkflow_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StartWorkflowRequest)
+func _WorkflowService_ScheduleWorkflow_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ScheduleWorkflowRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WorkflowServiceServer).StartWorkflow(ctx, in)
+		return srv.(WorkflowServiceServer).ScheduleWorkflow(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: WorkflowService_StartWorkflow_FullMethodName,
+		FullMethod: WorkflowService_ScheduleWorkflow_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WorkflowServiceServer).StartWorkflow(ctx, req.(*StartWorkflowRequest))
+		return srv.(WorkflowServiceServer).ScheduleWorkflow(ctx, req.(*ScheduleWorkflowRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -252,8 +252,8 @@ var WorkflowService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _WorkflowService_RegisterWorker_Handler,
 		},
 		{
-			MethodName: "StartWorkflow",
-			Handler:    _WorkflowService_StartWorkflow_Handler,
+			MethodName: "ScheduleWorkflow",
+			Handler:    _WorkflowService_ScheduleWorkflow_Handler,
 		},
 		{
 			MethodName: "PollForWorkflow",
