@@ -71,8 +71,8 @@ message CompleteWorkflowResponse {
   string message = 2;
 }
 message RegisterWorkerRequest {
-  string queue_id = 1;
-  string worker_id = 2;
+  string queue_name = 1;
+  string worker_name = 2;
 }
 
 message RegisterWorkerResponse {

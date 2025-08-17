@@ -651,8 +651,8 @@ func (x *CompleteWorkflowResponse) GetMessage() string {
 
 type RegisterWorkerRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	QueueId       string                 `protobuf:"bytes,1,opt,name=queue_id,json=queueId,proto3" json:"queue_id,omitempty"`
-	WorkerId      string                 `protobuf:"bytes,2,opt,name=worker_id,json=workerId,proto3" json:"worker_id,omitempty"`
+	QueueName     string                 `protobuf:"bytes,1,opt,name=queue_name,json=queueName,proto3" json:"queue_name,omitempty"`
+	WorkerName    string                 `protobuf:"bytes,2,opt,name=worker_name,json=workerName,proto3" json:"worker_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -687,16 +687,16 @@ func (*RegisterWorkerRequest) Descriptor() ([]byte, []int) {
 	return file_workflow_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *RegisterWorkerRequest) GetQueueId() string {
+func (x *RegisterWorkerRequest) GetQueueName() string {
 	if x != nil {
-		return x.QueueId
+		return x.QueueName
 	}
 	return ""
 }
 
-func (x *RegisterWorkerRequest) GetWorkerId() string {
+func (x *RegisterWorkerRequest) GetWorkerName() string {
 	if x != nil {
-		return x.WorkerId
+		return x.WorkerName
 	}
 	return ""
 }
@@ -811,10 +811,12 @@ const file_workflow_proto_rawDesc = "" +
 	"\n" +
 	"successful\x18\x01 \x01(\bR\n" +
 	"successful\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\"O\n" +
-	"\x15RegisterWorkerRequest\x12\x19\n" +
-	"\bqueue_id\x18\x01 \x01(\tR\aqueueId\x12\x1b\n" +
-	"\tworker_id\x18\x02 \x01(\tR\bworkerId\"R\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage\"W\n" +
+	"\x15RegisterWorkerRequest\x12\x1d\n" +
+	"\n" +
+	"queue_name\x18\x01 \x01(\tR\tqueueName\x12\x1f\n" +
+	"\vworker_name\x18\x02 \x01(\tR\n" +
+	"workerName\"R\n" +
 	"\x16RegisterWorkerResponse\x12\x1e\n" +
 	"\n" +
 	"successful\x18\x01 \x01(\bR\n" +
