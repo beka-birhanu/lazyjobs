@@ -70,18 +70,18 @@ message CompleteWorkflowResponse {
   bool successful = 1;
   string message = 2;
 }
-message RegisterWorkerRequest {
+message RegisterWorkflowRequest {
   string queue_name = 1;
-  string worker_name = 2;
+  string workflow_name = 2;
 }
 
-message RegisterWorkerResponse {
+message RegisterWorkflowResponse {
   bool successful = 1;
   string message = 2;
 }
 
 service WorkflowService {
-  rpc RegisterWorker(RegisterWorkerRequest) returns (RegisterWorkerResponse);
+  rpc RegisterWorkflow(RegisterWorkflowRequest) returns (RegisterWorkflowResponse);
   rpc ScheduleWorkflow(ScheduleWorkflowRequest) returns (ScheduleWorkflowResponse);
   rpc PollForWorkflow(PollForWorkflowRequest) returns (PollForWorkflowResponse);
   rpc AddWorkflowEvents(AddWorkflowEventsRequest) returns (AddWorkflowEventsResponse);
