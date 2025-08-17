@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/beka-birhanu/lazyjobs/protob/v1/golang;protob";
+
+message StartWorkflowRequest {
+  string queue_name = 1;
+  string workflow_name = 2;
+  repeated bytes parameters = 3;
+  string execution_id = 4;
+}
+
+message StartWorkflowResponse {
+  bool successful = 1;
+  string message = 2;
+}
+
+message PollForWorkflowRequest {
+  string queue_name = 1;
+}
+
+enum EventType {
+  EVENT_TYPE_UNSPECIFIED = 0;
+  EVENT_TYPE_WORKFLOW_EXECUTION_STARTED = 1;
+  EVENT_TYPE_WORKFLOW_EXECUTION_COMPLETED = 2;
+  EVENT_TYPE_ACTIVITY_TASK_SCHEDULED = 3;
+  EVENT_TYPE_ACTIVITY_TASK_STARTED = 4;
+  EVENT_TYPE_ACTIVITY_TASK_COMPLETED = 5;
+  EVENT_TYPE_TIMER_STARTED = 6;
+  EVENT_TYPE_TIMER_FIRED = 7;
+  EVENT_TYPE_SIGNAL_RECEIVED = 8;
+}
+
+message HistoryEvent {
+  int64 event_id = 1;
+  EventType event_type = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  bytes details = 4;
+}
+
+message Workflow {
+  string execution_id = 1;
+  string name = 2;
+  repeated bytes parameters = 3;
+  repeated HistoryEvent events = 4; // Ordered list of workflow events
+}
+
+message PollForWorkflowResponse {
+  bool successful = 1;
+  string message = 2;
+  Workflow workflow = 3;
+}
+
+message AddWorkflowEventsRequest {
+  string execution_id = 1;
+  map<string, bytes> events = 2;
+}
+
+message AddWorkflowEventsResponse {
+  bool successful = 1;
+  string message = 2;
+}
+
+message CompleteWorkflowRequest {
+  string execution_id = 1;
+}
+
+message CompleteWorkflowResponse {
+  bool successful = 1;
+  string message = 2;
+}
+message RegisterWorkerRequest {
+  string queue_id = 1;
+  string worker_id = 2;
+}
+
+message RegisterWorkerResponse {
+  bool successful = 1;
+  string message = 2;
+}
+
+service WorkflowService {
+  rpc RegisterWorker(RegisterWorkerRequest) returns (RegisterWorkerResponse);
+  rpc StartWorkflow(StartWorkflowRequest) returns (StartWorkflowResponse);
+  rpc PollForWorkflow(PollForWorkflowRequest) returns (PollForWorkflowResponse);
+  rpc AddWorkflowEvents(AddWorkflowEventsRequest) returns (AddWorkflowEventsResponse);
+  rpc CompleteWorkflow(CompleteWorkflowRequest) returns (CompleteWorkflowResponse);
+}
